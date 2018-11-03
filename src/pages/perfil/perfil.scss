@@ -1,24 +1,28 @@
-page-home {
-    .searchbar {
-        width: 18em;
-    }
+page-perfil {
     .background {
         background-color: azure;
     }
-    .feedtxt {
-        margin-bottom: 1.5em;
-        margin-top: .5em;
-        background-color: white;
-        padding-left: .5em;
-        width: 16em;
+
+    .avatar-wrapper {
         position: relative;
-        left: 4em;
-        border: .05em solid lightgray;
-        border-radius: 1em;
-        box-shadow: .1em .1em .1em .01em lightgray;
-        
+        width: 12em;
+        margin: auto;
+
+        ion-avatar img {
+            background-color: #DDDDDD;
+            width: 12em;
+            height: 12em;
+            margin: auto;
+        }
+
+        .btn-tirar-foto {
+            position: absolute;
+            bottom: 0;
+            right: .5em;
+            width: 3em;
+            height: 3em;
+        }
     }
-    
     .piu {
         margin-bottom:1em;
         
@@ -72,41 +76,14 @@ page-home {
         position: relative;
         bottom: .6em;
         left: 1em;
+            
+        
+    
     }
     .avatar-feed {
         width: 2.5em;
         height: 2.5em;
         margin: 1em;
         border-radius: 1.25em;
-    }
-    .avatar-user {
-        width: 2.5em;
-        height: 2.5em;
-        border-radius: 1.25em;
-        position: absolute;
-        left: 2em;
-        top: 1.5em;
-    }
-    .contador {
-        font-size: .9em;
-        position: absolute;
-        top: 4.6em;
-        left: 2.3em;
-        color: gray;
-        
-    }
-    .btn-piu {
-        position: absolute;
-        top: 1.5em;
-        right: 1.8em;
-        background-color: transparent;
-        color: lightgray;
-        font-size: 1.5em;
-    }
-    .fundoExcesso {
-        background-color: lightyellow;
-    }
-    .excessoChar {
-        color: crimson;
     }
 }

@@ -1,0 +1,30 @@
+<ion-content scroll="false" class="bg">
+  <div>
+    <div class="splash-info">
+      <div class="splash-logo"></div>
+      <div class="splash-intro">
+        PiuPiuwer
+      </div>
+    </div>
+
+
+    <div padding>
+        <form (ngSubmit)="efetuaLogin()" class="form-login">
+          <ion-item>
+              <ion-label stacked>Email</ion-label>
+              <ion-input [(ngModel)]="username" name="email" type="text"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+              <ion-label stacked>Senha</ion-label>
+              <ion-input [(ngModel)]="password" name="senha" type="password"></ion-input>
+          </ion-item>
+    
+          <button ion-button block type="submit" class="login">ENTRAR</button>
+        </form>
+        <button class="cadastro" (click)="irParaCadastro()">
+          <p>Não tem uma conta? Cadastre-se</p>
+        </button>
+      </div>
+  </div>
+</ion-content>

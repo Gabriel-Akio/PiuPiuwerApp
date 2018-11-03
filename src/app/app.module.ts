@@ -6,25 +6,45 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { HttpClientModule } from '@angular/common/http';
+
+import { CadastroPage } from '../pages/cadastro/cadastro';
+import { LoginPage } from '../pages/login/login';
+
+import { PerfilPage } from '../pages/perfil/perfil';
+import { PiuServiceProvider } from '../providers/piu-service/piu-service';
+import { UsuariosServiceProvider } from '../providers/usuarios-service/usuarios-service';
+import {TimeAgoPipe} from 'time-ago-pipe';
+import { CrudeProvider } from '../providers/crude/crude';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    CadastroPage,
+    LoginPage,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CadastroPage,
+    LoginPage 
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PiuServiceProvider,
+    UsuariosServiceProvider,
+    CrudeProvider
   ]
 })
 export class AppModule {}

@@ -1,14 +1,55 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar color="color1">
+    <button ion-button menuToggle>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-searchbar class="searchbar"></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="background" padding>
+
+  <img class="avatar-user" src="assets/imgs/avatar-padrao.jpg">
+
+  <form class="form-piu" (ngSubmit)="postaPiu()">
+
+    <ion-input (input)="validaPiu()" [(ngModel)]="campoPiu" class="feedtxt" [ngClass]="{'fundoExcesso': invalidPiu}" type="text"
+     name="piu" placeholder="Digite um Piu"></ion-input>
+
+    <button class="btn-piu">
+      <ion-icon name="send"></ion-icon>
+    </button>
+
+    <span class="contador" [ngClass]="{'excessoChar': invalidPiu}">{{ campoPiu.length }}/140</span>
+
+  </form>
+  
+  <ion-list>
+
+    <ion-card *ngFor="let piu of pius" class="piu">
+    
+      <button icon-only class="close-piu">
+        <ion-icon name="close"></ion-icon>
+      </button>
+
+      <img class="avatar-feed" src="assets/imgs/avatar-padrao.jpg">
+    
+      <button class="botao-perfil" (click)="irParaPerfil()">
+        <h2>Gabriel Akio</h2>
+      </button>
+
+      <span>{{piu.data | timeAgo}}</span>
+
+      <ion-card-content>
+          <p>{{ piu.conteudo }}</p>
+      </ion-card-content>
+      
+      <button class="button-feed" icon-only>
+        <ion-icon name="heart"></ion-icon>
+      </button>
+
+    </ion-card>
+
+  </ion-list>
+
 </ion-content>

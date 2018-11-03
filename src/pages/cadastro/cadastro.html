@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar color="color1">
+    <ion-title>Cadastro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="background" padding>
+  <form>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input name="email" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Username</ion-label>
+      <ion-input name="username" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input name="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sobrenome</ion-label>
+      <ion-input name="sobrenome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input name="senha" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Confirmar Senha</ion-label>
+      <ion-input name="confirmar-senha" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines>
+        <p class="foto-texto">Escolha sua foto de perfil</p>
+        <div class="avatar-wrapper">
+          <ion-avatar>
+            <img src="assets/imgs/avatar-padrao.jpg">
+          </ion-avatar>
+    
+          <button class="btn-tirar-foto" ion-button icon-only round>
+            <ion-icon name="camera"></ion-icon>
+          </button>
+        </div>
+    </ion-item>
+
+    <button ion-button block type="submit" class="cadastrar">CADASTRAR</button>
+  </form>
+</ion-content>
