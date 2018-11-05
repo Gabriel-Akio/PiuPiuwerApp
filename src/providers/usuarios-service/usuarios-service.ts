@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../modelos/usuario';
+import { LoginPage } from '../../pages/login/login';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UsuariosServiceProvider {
@@ -26,4 +28,9 @@ export class UsuariosServiceProvider {
     return this._http.post('http://piupiuwer.polijunior.com.br/api/login/', body, {headers});
   }
 
+  usuario(usuario: string) {
+    return this._http.get<Usuario>('http://piupiuwer.polijunior.com.br/api/usuarios/' + usuario);
+  }
+
+  
 }

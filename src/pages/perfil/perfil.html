@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="color1">
-    <ion-title>Username</ion-title>
+    <ion-title>{{ usuario.username }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,23 +20,23 @@
     </div>
   </ion-item>
 
-  <ion-card>
+  <ion-card class="info-perfil">
     <ion-item>
       <ion-icon name="contact" item-left></ion-icon>
-      Nome Completo
+      {{usuario.first_name}}  {{usuario.last_name}}
     </ion-item>
     <ion-item>
         <ion-icon name="at" item-left></ion-icon>
-        <p> Email </p>
+        <p> {{usuario.email}} </p>
     </ion-item>
     <ion-item>
-        <ion-icon name="at" item-left></ion-icon>
-        <p>N Pius</p>
+        <ion-icon name="send" item-left></ion-icon>
+        <p>{{piusContados.length}} Pius</p>
     </ion-item>
   </ion-card>
 
   <ion-list>
-    <ion-card class="piu">
+    <ion-card *ngFor="let piuPerfil of piusContados" class="piu" [ngClass]="{'piuFavoritado': piuPerfil.favoritado}">
       
       <button icon-only class="close-piu">
         <ion-icon name="close"></ion-icon>
@@ -45,16 +45,16 @@
       <img class="avatar-feed" src="assets/imgs/avatar-padrao.jpg">
     
       <button class="botao-perfil">
-        <h2>Gabriel Akio</h2>
+        <h2>{{usuario.username}}</h2>
       </button>
 
-      <span>data</span>
+      <span>{{ piuPerfil.data | timeAgo}}</span>
 
       <ion-card-content>
-          <p>piu</p>
+          <p>{{ piuPerfil.conteudo }}</p>
       </ion-card-content>
       
-      <button class="button-feed" icon-only>
+      <button [ngClass]="{'favoritado': piuPerfil.favoritado}" class="button-feed" icon-only>
         <ion-icon name="heart"></ion-icon>
       </button>
 

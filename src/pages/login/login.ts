@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Usuario } from '../../modelos/usuario';
+import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UsuariosServiceProvider } from '../../providers/usuarios-service/usuarios-service';
 import { CadastroPage } from '../cadastro/cadastro';
+import { CrudeProvider } from '../../providers/crude/crude';
+import { Usuario } from '../../modelos/usuario';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @IonicPage()
 @Component({
@@ -12,39 +15,54 @@ import { CadastroPage } from '../cadastro/cadastro';
 })
 export class LoginPage {
 
-  public username;
-  public password;
+  public nomeUser: string;
+  public username: string = '';
+  public password: string = '';
   public globalToken;
-  public decodedJSON: string[];
-  public globalUserID;
+  public usuario: Usuario;
+  public usuarioLogado;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public _usuariosService: UsuariosServiceProvider,
-              private _alertCtrl: AlertController) {
+              private _alertCtrl: AlertController,
+              private _crud: CrudeProvider,
+              private menu: MenuController) {
+                this.tirarMenu();
+      
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  tirarMenu() {
+    this.menu.enable(false, 'menu1');
   }
 
   irParaCadastro() {
-    this.navCtrl.push(CadastroPage);
+    this.navCtrl.push(CadastroPage.name);
   }
 
   efetuaLogin() {
     console.log(this.username);
     console.log(this.password);
 
+    if (!this.username || !this.password) {
+      this._alertCtrl.create({
+        title: 'Preenchimento obrigatório',
+        subTitle: 'Preencha todos os campos!',
+        buttons: [
+          { text: 'ok' }
+        ]
+      }).present();
+
+      return;
+    }
+
     this._usuariosService
           .efetuaLogin(this.username, this.password)
           .subscribe(
             (data) => {
-              console.log(data["token"]);
               this.globalToken = data['token'];
-              this.tokenDecode();
-              this.globalUserID = this.decodedJSON['user_id'];
-              console.log(this.globalUserID);
+              this.updateGlobalToken();
+              this._crud.tokenDecode();
               this.navCtrl.setRoot(HomePage);
             },
             () => {
@@ -58,21 +76,11 @@ export class LoginPage {
 
             }
           )
-    
     }
 
-    tokenDecode() {
-      const token = this.globalToken;
-      let payload;
-      if (token) {
-        payload = token.split(".")[1];
-        payload = window.atob(payload);
-        this.decodedJSON = JSON.parse(payload);
-        return true;
-      } else {
-        return null;
-      }
-  
+    updateGlobalToken() {
+      let globalToken = this.globalToken;
+      this._crud.setGlobalToken(globalToken);
     }
 
 }

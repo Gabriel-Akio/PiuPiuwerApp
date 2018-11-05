@@ -9,5 +9,8 @@ import { CadastroPage } from './cadastro';
   imports: [
     IonicPageModule.forChild(CadastroPage),
   ],
+  exports: [
+    CadastroPage
+  ]
 })
 export class CadastroPageModule {}

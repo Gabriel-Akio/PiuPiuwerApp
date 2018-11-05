@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,12 +8,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilPage {
 
+  public usuario;
+  public piusContados;
+
   constructor(public navCtrl: NavController, 
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              private menu: MenuController) {
+                this.usuario = this.navParams.get("usuarioClicado");
+                this.piusContados  = this.navParams.get("piusContados")
+                this.colocaMenu();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
+  colocaMenu() {
+    this.menu.enable(true, 'menu1');
   }
 
 }

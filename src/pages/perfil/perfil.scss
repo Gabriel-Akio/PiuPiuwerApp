@@ -23,15 +23,24 @@ page-perfil {
             height: 3em;
         }
     }
+    .info-perfil {
+        margin-bottom: 4em;
+    }
+
     .piu {
         margin-bottom:1em;
         
-        
+        h2 {
+            position: relative;
+            bottom: .5em;
+        }
         span {
             position: relative;
-            bottom: 4.1em;
-            right: 8.2em;
+            bottom: 8em;
+            left: 2.7em;
+            display: block;
             margin: 1em;
+            margin-bottom: -4em;
             padding: 1em;
             color: lightgray;
             font-size: .9em;
@@ -85,5 +94,12 @@ page-perfil {
         height: 2.5em;
         margin: 1em;
         border-radius: 1.25em;
+    }
+
+    .favoritado {
+        color: red;
+    }
+    .piuFavoritado {
+        background-color: lightyellow;
     }
 }

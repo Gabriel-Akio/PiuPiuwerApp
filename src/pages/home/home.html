@@ -21,21 +21,22 @@
     </button>
 
     <span class="contador" [ngClass]="{'excessoChar': invalidPiu}">{{ campoPiu.length }}/140</span>
+    <p class="erro">{{ mensagemErro }}</p>
 
   </form>
   
   <ion-list>
 
-    <ion-card *ngFor="let piu of pius" class="piu">
+    <ion-card *ngFor="let piu of pius, let user of usuarios" class="piu" [ngClass]="{'piuFavoritado': piu.favoritado}">
     
-      <button icon-only class="close-piu">
+      <button icon-only class="close-piu" (click)="deletaPiu(piu.usuario.id, piu.id)">
         <ion-icon name="close"></ion-icon>
       </button>
 
       <img class="avatar-feed" src="assets/imgs/avatar-padrao.jpg">
     
-      <button class="botao-perfil" (click)="irParaPerfil()">
-        <h2>Gabriel Akio</h2>
+      <button class="botao-perfil" (click)="irParaPerfil(piu.usuario)">
+        <h2>{{ piu.usuario.username }}</h2>
       </button>
 
       <span>{{piu.data | timeAgo}}</span>
@@ -44,7 +45,7 @@
           <p>{{ piu.conteudo }}</p>
       </ion-card-content>
       
-      <button class="button-feed" icon-only>
+      <button class="button-feed" [ngClass]="{'favoritado': piu.favoritado}" icon-only (click)="favoritaPiu(piu.favoritado, piu.id)">
         <ion-icon name="heart"></ion-icon>
       </button>
 

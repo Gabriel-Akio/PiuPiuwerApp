@@ -19,18 +19,33 @@ page-home {
         
     }
     
+    .erro {
+        text-align: center;
+        margin-top: -.5em;
+        position: relative;
+        right: 1em;
+        color: gray;
+    }
+
     .piu {
         margin-bottom:1em;
         
-        
+        h2 {
+            position: relative;
+            
+        }
         span {
             position: relative;
-            bottom: 4.1em;
-            right: 8.2em;
+            bottom: 8em;
+            left: 2.7em;
+            display: block;
             margin: 1em;
+            margin-bottom: -4em;
             padding: 1em;
             color: lightgray;
             font-size: .9em;
+            
+            
         }
         ion-card-content {
             position: relative;
@@ -91,7 +106,7 @@ page-home {
         font-size: .9em;
         position: absolute;
         top: 4.6em;
-        left: 2.3em;
+        left: 2.1em;
         color: gray;
         
     }
@@ -108,5 +123,11 @@ page-home {
     }
     .excessoChar {
         color: crimson;
+    }
+    .favoritado {
+        color: red;
+    }
+    .piuFavoritado {
+        background-color: lightyellow;
     }
 }

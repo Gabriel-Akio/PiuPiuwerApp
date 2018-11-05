@@ -21,8 +21,8 @@ import { CrudeProvider } from '../providers/crude/crude';
   declarations: [
     MyApp,
     HomePage,
-    CadastroPage,
     LoginPage,
+    PerfilPage,
     TimeAgoPipe
   ],
   imports: [
@@ -34,8 +34,8 @@ import { CrudeProvider } from '../providers/crude/crude';
   entryComponents: [
     MyApp,
     HomePage,
-    CadastroPage,
-    LoginPage 
+    LoginPage,
+    PerfilPage
     
   ],
   providers: [
